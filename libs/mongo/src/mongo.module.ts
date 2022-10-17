@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
-import { MongooseModule } from "@nestjs/mongoose";
 import { ConfigModule, ConfigService } from "@nestjs/config";
+import { MongooseModule } from "@nestjs/mongoose";
 
 @Module({
     imports: [
@@ -9,7 +9,6 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
             useFactory: (configService: ConfigService) => ({
                 // uri: "mongodb://localhost:27017/myapp",
                 uri: configService.get<string>("MONGO_URI"),
-
             }),
             inject: [ConfigService],
         }),

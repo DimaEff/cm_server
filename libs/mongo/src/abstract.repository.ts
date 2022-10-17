@@ -1,4 +1,5 @@
 import { AbstractDocument } from "@app/mongo/abstract.schema";
+import { MESSAGES } from "@app/mongo/consts";
 import { Logger, NotFoundException } from "@nestjs/common";
 import {
     ClientSession,
@@ -9,7 +10,6 @@ import {
     Types,
     UpdateQuery,
 } from "mongoose";
-import { MESSAGES } from "@app/mongo/consts";
 
 export abstract class AbstractRepository<TDoc extends AbstractDocument> {
     protected abstract logger: Logger;
