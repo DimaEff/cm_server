@@ -1,5 +1,5 @@
-import { AbstractDocument } from '@app/mongo/abstract.schema';
-import { Logger, NotFoundException } from '@nestjs/common';
+import { AbstractDocument } from "@app/mongo/abstract.schema";
+import { Logger, NotFoundException } from "@nestjs/common";
 import {
     ClientSession,
     Connection,
@@ -8,8 +8,8 @@ import {
     SaveOptions,
     Types,
     UpdateQuery,
-} from 'mongoose';
-import { MESSAGES } from '@app/mongo/consts';
+} from "mongoose";
+import { MESSAGES } from "@app/mongo/consts";
 
 export abstract class AbstractRepository<TDoc extends AbstractDocument> {
     protected abstract logger: Logger;
@@ -19,7 +19,7 @@ export abstract class AbstractRepository<TDoc extends AbstractDocument> {
         private readonly connection: Connection,
     ) {}
 
-    async create(doc: Omit<TDoc, '_id'>, options?: SaveOptions): Promise<TDoc> {
+    async create(doc: Omit<TDoc, "_id">, options?: SaveOptions): Promise<TDoc> {
         const createdDoc = new this.model({
             ...doc,
             _id: new Types.ObjectId(),
